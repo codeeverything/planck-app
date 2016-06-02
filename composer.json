@@ -1,5 +1,5 @@
 {
-    "name": "codeeverything/planck-framework",
+    "name": "codeeverything/planck-app",
     "authors": [
         {
             "name": "Mike Timms",
@@ -9,6 +9,7 @@
     "require": {
         "codeeverything/burlap": "dev-master",
         "codeeverything/junction": "dev-master",
+        "codeeverything/planck-framework": "~0.1",
         "doctrine/orm": "^2.5"
     },
     "require-dev": {

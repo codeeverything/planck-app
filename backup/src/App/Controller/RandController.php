@@ -18,6 +18,8 @@ class RandController extends Controller {
         for ($i=0; $i < $num; $i++) {
             $rand[] = $this->rand[0];
         }
+        print_r($rand);
+        die();
         
         return join(', ', $rand);
     }
