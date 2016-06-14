@@ -71,20 +71,20 @@ angular.module('planckApp', ['ngRoute']).config(['$routeProvider', function($rou
         list: function () {
             return $http({
                 method: 'GET',
-                url: '/api/todo'
+                url: '/api/todos'
             });
         },
         add: function (item) {
             return $http({
                 method: 'POST',
-                url: '/api/todo',
+                url: '/api/todos',
                 data: item
             });
         },
         delete: function (id) {
             return $http({
                 method: 'DELETE',
-                url: '/api/todo/' + id
+                url: '/api/todos/' + id
             });
         }
     }

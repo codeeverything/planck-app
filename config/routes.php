@@ -17,23 +17,8 @@ use Junction\Router;
 // define the router - This can be any router, but it must be set to a variable called "router"
 $router = new Router();
 
-$router->add('GET /test', function () {
-    return [
-        'controller' => 'Test',
-        'action' => 'test',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /api/todo/:id', function ($id) {
-    return [
-        'controller' => 'Todo',
-        'action' => 'view',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /api/todo', function () {
+// list all todos
+$router->add('GET /api/todos', function () {
     return [
         'controller' => 'Todo',
         'action' => 'index',
@@ -41,8 +26,17 @@ $router->add('GET /api/todo', function () {
     ];
 });
 
+// view a specifc todo
+$router->add('GET /api/todos/:id', function ($id) {
+    return [
+        'controller' => 'Todo',
+        'action' => 'view',
+        'vars' => func_get_args(),
+    ];
+});
 
-$router->add('POST /api/todo', function () {
+// add a new todo
+$router->add('POST /api/todos', function () {
     return [
         'controller' => 'Todo',
         'action' => 'add',
@@ -50,7 +44,8 @@ $router->add('POST /api/todo', function () {
     ];
 });
 
-$router->add('PUT /api/todo/:id', function ($id) {
+// update a specific todo
+$router->add('PUT /api/todos/:id', function ($id) {
     return [
         'controller' => 'Todo',
         'action' => 'edit',
@@ -58,72 +53,11 @@ $router->add('PUT /api/todo/:id', function ($id) {
     ];
 });
 
-$router->add('DELETE /api/todo/:id', function ($id) {
+// delete a specific todo
+$router->add('DELETE /api/todos/:id', function ($id) {
     return [
         'controller' => 'Todo',
         'action' => 'delete',
         'vars' => func_get_args(),
     ];
 });
-
-$router->add('GET /rand/:num?', function ($num) {
-    return [
-        'controller' => 'Rand',
-        'action' => 'rand',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /api/rand/:num?', function ($num) {
-    return [
-        'controller' => 'Rand',
-        'action' => 'rand',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /hello/:name?', function ($name) {
-    return [
-        'controller' => 'My',
-        'action' => 'hello',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /bye', function ($name) {
-    return [
-        'controller' => 'My',
-        'action' => 'bye',
-        'vars' => func_get_args(),
-    ];
-});
-
-$router->add('GET /', function () {
-    return [
-        'controller' => 'My',
-        'action' => 'hello',
-        'vars' => func_get_args(),
-    ];
-});
-
-
-
-// TODO: Pass this responsibility to a Router (Junction for example), and try to keep this decoupled so any router couuld be used
-// $routes = array(
-//     '/hello' => array(
-//         'controller' => 'My',
-//         'action' => 'hello',
-//     ),
-//     '/bye' => array(
-//         'controller' => 'My',
-//         'action' => 'bye',
-//     ),
-//     '/rand' => [
-//         'controller' => 'Rand',
-//         'action' => 'rand',
-//     ],
-//     '/' => [
-//         'controller' => 'My',
-//         'action' => 'hello',
-//     ],
-// );
